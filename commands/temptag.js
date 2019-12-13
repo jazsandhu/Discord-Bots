@@ -2,7 +2,7 @@ const ms = require("ms");
 
 module.exports.run = async (client, message, args) => {
 
-    //!temptag @user tag-label 1s/m/h/d
+    //temptag @user tag-label 1s/m/h/d
     if (message.member.hasPermission("MANAGE_ROLES")) {
         let userToTag = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if (!userToTag) return message.reply("Couldn't find user.");
@@ -31,7 +31,7 @@ module.exports.run = async (client, message, args) => {
         replychannel.send(`<@${userToTag.id}> tagged for ${ms(ms(tagTime))}`);
 
         setTimeout(function () {
-            await userToTag.roles.has(message.guild.roles.find(tagRole => tagRole.name === args[1]));
+            await (userToTag.roles.has(message.guild.roles.find(tagRole => tagRole.name === args[1])));
             message.channel.send(`<@${userToTag.id}> has been untagged!`);
             if (teamRole.members.length === 0) {
                 message.channel.sendMessage('Test'); //It says test for now for testing reason, I read the documentation and I don't know how to delete a role could you help me after with that  

@@ -18,9 +18,7 @@ fs.readdir("./events/", (err, files) => {
 
 client.commands = new Enmap();
 
-client.on('message', (message) => {
-  console.log("");
-});
+client.on('message', (message) => {});
 
 fs.readdir("./commands/", (err, files) => {
   if (err) return console.error(err);
